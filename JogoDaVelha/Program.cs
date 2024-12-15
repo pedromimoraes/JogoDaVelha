@@ -1,7 +1,7 @@
-﻿﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
 
-namespace Jogo
+namespace JogoDaVelha
 {
     class Program
     {
@@ -56,9 +56,18 @@ namespace Jogo
                 {
                     for (int j = 0; j < 3; j++)
                     {
-                        if (posicao == tabuleiro[i, j])
+                        if (tabuleiro[i,j] != "X" && tabuleiro[i,j] != "O" && posicao == tabuleiro[i, j])
                         {
+                            // Atribuindo o simbolo a posição escolhida.
                             tabuleiro[i, j] = jogador;
+
+                            // Iteração para limitar o while do jogo.
+                            turno++;
+                        }
+                        //TODO: Retirar essa mensagem do Loop e validar corretamente as jogadas.
+                        else
+                        {
+                            break;
                         }
                     }
 
@@ -163,8 +172,7 @@ namespace Jogo
                     break;
                 }
 
-                // Iteração para limitar o while do jogo.
-                turno++;
+
             }
 
         }
